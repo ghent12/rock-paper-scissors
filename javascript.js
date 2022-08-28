@@ -81,4 +81,3 @@ console.group("Testing 10");
   console.log("9: " + singleGame());
   console.log("10: " + singleGame());*/
 console.groupEnd("Testing 10");
-
