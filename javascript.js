@@ -11,48 +11,70 @@ function getComputerChoice() {
   }
 }
 
-function singleGame(playerSelection, computerSelection) {
+function buttonRound(e) {
+  let playerSelection = this.classList.value.slice(0, 3);
+  let score = playRound(playerSelection);
+  const scoreLog = document.getElementById("scorelog");
+  const scoreEntry = scoreLog.appendChild(document.createElement("li"));
+  scoreEntry.textContent = score;
+  //document.body.appendChild(scoreLog);
+}
+/*
+const fragment = document.createDocumentFragment();
+const li = fragment
+  .appendChild(document.createElement('section'))
+  .appendChild(document.createElement('ul'))
+  .appendChild(document.createElement('li'));
+li.textContent = 'hello world';
+
+document.body.appendChild(fragment);
+*/
+function playRound(playerSelection, computerSelection) {
   computerSelection = getComputerChoice();
-  playerSelection = prompt("Rock, Paper, or Scissors? (Don't misspell it please)").toLowerCase()
-  // console.log(computerSelection + " : " + playerSelection); // troubleshooting
+
+  console.group('selections');
+    console.log("Player: " + playerSelection);
+    console.log("Computer:" + computerSelection);
+  console.groupEnd('selections');
+
   if (computerSelection === "Rock") {
     switch (playerSelection) {
-      case "rock":
+      case "roc":
         return "Tie! Rock ties rock"
-      case "paper":
+      case "pap":
         return "You win! Paper beats rock"
-      case "scissors":
+      case "sci":
         return "You lose! Rock beats scissors"
     }
   } else if (computerSelection === "Paper") {
     switch (playerSelection) {
-      case "rock":
+      case "roc":
         return "You lose! Paper beats rock"
-      case "paper":
+      case "pap":
         return "Tie! Paper ties paper"
-      case "scissors":
+      case "sci":
         return "You win! Scissors beats paper"
     }
   } else if (computerSelection === "Scissors") {
     switch (playerSelection) {
-      case "rock":
+      case "roc":
         return "You win! Rock beats scissors"
-      case "paper":
+      case "pap":
         return "You lose! Scissors beats paper"
-      case "scissors":
+      case "sci":
         return "Tie! Scissors ties paper"
     }
   }
 }
 
-function game() {
+/*function game() {
   let playerScore = 0
     , computerScore = 0
     , singleGameResult;
 
 
   for (i = 0; i < 5; i++) {
-    singleGameResult = singleGame().substring(0, 5);
+    singleGameResult = playRound().substring(0, 5);
     if (singleGameResult === "You w") {
       playerScore++;
     } else if (singleGameResult === "You l") {
@@ -67,17 +89,47 @@ function game() {
   } else {
     return `You lost the best-of-5 with a score of ${playerScore} to ${computerScore}! (${5 - playerScore - computerScore} tied games.)`;
   }
+}*/
+
+/*
+  window.addEventListener('keydown', function (e) {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    if(!audio) return; // Stop function from running.
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    console.log(key);
+    audio.currentTime = 0; // Resets time to 0 to prevent problem described in comments below
+    audio.play(); // Calling .play() again does not play it until it's finished.
+    key.classList.add('playing');
+
+  });
+
+  divs.forEach(div => div.addEventListener('click', logText, {
+    capture: false,
+    once: true // Will listen for a 'click', then unbind itself. Same as a .removeEventListener
+  }));
+
+*/
+
+function actionJackson(e) {
+  console.log(this.classList.value);
 }
 
+const buttons = document.querySelectorAll('button')
+
+buttons.forEach(button => button.addEventListener('click', buttonRound, {
+    capture: false
+  })
+);
+
 console.group("Testing 10");
-  console.log("1: " + game());
-  /*console.log("2: " + singleGame());
-  console.log("3: " + singleGame());
-  console.log("4: " + singleGame());
-  console.log("5: " + singleGame());
-  console.log("6: " + singleGame());
-  console.log("7: " + singleGame());
-  console.log("8: " + singleGame());
-  console.log("9: " + singleGame());
-  console.log("10: " + singleGame());*/
+  console.log("1: " + playRound());
+  /*console.log("2: " + playRound());
+  console.log("3: " + playRound());
+  console.log("4: " + playRound());
+  console.log("5: " + playRound());
+  console.log("6: " + playRound());
+  console.log("7: " + playRound());
+  console.log("8: " + playRound());
+  console.log("9: " + playRound());
+  console.log("10: " + playRound());*/
 console.groupEnd("Testing 10");
