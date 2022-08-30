@@ -46,27 +46,9 @@ function buttonRound(e) {
   scoreEntry.textContent = score;
   scoreEntry.classList = 'score-entry';
   firstTo5Points();
-  //document.body.appendChild(scoreLog);
 }
-/*
-const fragment = document.createDocumentFragment();
-const li = fragment
-  .appendChild(document.createElement('section'))
-  .appendChild(document.createElement('ul'))
-  .appendChild(document.createElement('li'));
-li.textContent = 'hello world';
-
-document.body.appendChild(fragment);
-*/
 function playRound(playerSelection, computerSelection) {
   computerSelection = getComputerChoice();
-
-
-/*  console.group('selections');
-    console.log("Player: " + playerSelection);
-    console.log("Computer:" + computerSelection);
-  console.groupEnd('selections'); */ //Troubleshooting
-
   if (computerSelection === "Rock") {
     switch (playerSelection) {
       case "roc":
@@ -102,49 +84,6 @@ function playRound(playerSelection, computerSelection) {
     }
   }
 }
-
-/*function game() {
-  let playerScore = 0
-    , computerScore = 0
-    , singleGameResult;
-
-
-  for (i = 0; i < 5; i++) {
-    singleGameResult = playRound().substring(0, 5);
-    if (singleGameResult === "You w") {
-      playerScore++;
-    } else if (singleGameResult === "You l") {
-      computerScore++;
-    }
-  }
-
-  if (playerScore > computerScore) {
-    return `You won the best-of-5 with a score of ${playerScore} to ${computerScore}! (${5 - playerScore - computerScore} tied games.)`;
-  } else if (playerScore = computerScore) {
-    return `You tied the best-of-5 with a score of ${playerScore} to ${computerScore}! (${5 - playerScore - computerScore} tied games.)`;
-  } else {
-    return `You lost the best-of-5 with a score of ${playerScore} to ${computerScore}! (${5 - playerScore - computerScore} tied games.)`;
-  }
-}*/
-
-/*
-  window.addEventListener('keydown', function (e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    if(!audio) return; // Stop function from running.
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-    console.log(key);
-    audio.currentTime = 0; // Resets time to 0 to prevent problem described in comments below
-    audio.play(); // Calling .play() again does not play it until it's finished.
-    key.classList.add('playing');
-
-  });
-
-  divs.forEach(div => div.addEventListener('click', logText, {
-    capture: false,
-    once: true // Will listen for a 'click', then unbind itself. Same as a .removeEventListener
-  }));
-
-*/
 
 function actionJackson(e) {
   console.log(this.classList.value);
